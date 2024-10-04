@@ -11,12 +11,12 @@ public class StudentList {
 		if(args[0].equals("a")) {
 			System.out.println("Loading data ...");			
 			try {
-			BufferedReader s = new BufferedReader(
-							   new InputStreamReader(
-							   new FileInputStream("students.txt")));
-			String r = s.readLine();
-			String i[] = r.split(",");			
-			for(String j : i) { System.out.println(j.trim()); }
+			BufferedReader filereader = new BufferedReader(
+							   			new InputStreamReader(
+							   			new FileInputStream("students.txt")));
+			String readLine = filereader.readLine();
+			String split[] = readLine.split(",");
+			for(String word : split) { System.out.println(word.trim()); }
 			} catch (Exception e){} 
 			System.out.println("Data Loaded.");
 		}
@@ -24,29 +24,29 @@ public class StudentList {
 		{
 			System.out.println("Loading data ...");			
 			try {
-			BufferedReader s = new BufferedReader(
-							   new InputStreamReader(
-							   new FileInputStream("students.txt")));
-			String r = s.readLine();
-			String i[] = r.split(",");	
-			Random x = new Random();
-				int y = x.nextInt(i.length);
-					System.out.println(i[y]);
+			BufferedReader filereader = new BufferedReader(
+							   			new InputStreamReader(
+							   			new FileInputStream("students.txt")));
+			String readLine = filereader.readLine();
+			String split[] = readLine.split(",");
+			Random random = new Random();
+				int randoNum = random.nextInt(split.length);
+					System.out.println(split[randoNum]);
 			} catch (Exception e){} 
 			System.out.println("Data Loaded.");			
 		}
 		else if(args[0].contains("+")){
 			System.out.println("Loading data ...");			
 			try {
-			BufferedWriter s = new BufferedWriter(
-							   new FileWriter("students.txt", true));
-			String t = args[0].substring(1);
-	        Date d = new Date();
-	        String df = "dd/mm/yyyy-hh:mm:ss a";
-	        DateFormat dateFormat = new SimpleDateFormat(df);
-	        String fd= dateFormat.format(d);
-			s.write(", "+t+"\nList last updated on "+fd);
-			s.close();
+			BufferedWriter filereader = new BufferedWriter(
+									    new FileWriter("students.txt", true));
+			String newword = args[0].substring(1);
+	        Date date = new Date();
+	        String datetype = "dd/mm/yyyy-hh:mm:ss a";
+	        DateFormat dateFormat = new SimpleDateFormat(datetype);
+	        String format= dateFormat.format(date);
+			filereader.write(", "+newword+"\nList last updated on "+format);
+			filereader.close();
 			} catch (Exception e){}
 							
 			System.out.println("Data Loaded.");	
@@ -55,15 +55,15 @@ public class StudentList {
 		{
 			System.out.println("Loading data ...");			
 			try {
-			BufferedReader s = new BufferedReader(
-							   new InputStreamReader(
-						       new FileInputStream("students.txt")));
-			String r = s.readLine();
-			String i[] = r.split(",");	
+			BufferedReader filereader = new BufferedReader(
+							   			new InputStreamReader(
+						       		    new FileInputStream("students.txt")));
+			String readLine = filereader.readLine();
+			String split[] = readLine.split(",");
 			boolean done = false;
-			String t = args[0].substring(1);
-			for(int idx = 0; idx<i.length && !done; idx++) {
-				if(i[idx].trim().equals(t)) {
+			String words = args[0].substring(1);
+			for(int idx = 0; idx<split.length && !done; idx++) {
+				if(split[idx].trim().equals(words)) {
 					System.out.println("We found it!");
 						done=true;
 				}
@@ -75,14 +75,14 @@ public class StudentList {
 		{
 			System.out.println("Loading data ...");			
 			try {
-			BufferedReader s = new BufferedReader(
-							   new InputStreamReader(
-							   new FileInputStream("students.txt")));
-			String D = s.readLine();
-			char a[] = D.toCharArray();			
+			BufferedReader filereafer = new BufferedReader(
+							   			new InputStreamReader(
+							   			new FileInputStream("students.txt")));
+			String readLine = filereafer.readLine();
+			char charArray[] = readLine.toCharArray();
 			boolean in_word = false;
 			int count=0;
-			for(char c:a) {
+			for(char c:charArray) {
 				if(c ==' ') 
 				{
 					if (!in_word) {	count++; in_word =true;	}
