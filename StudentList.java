@@ -74,7 +74,7 @@ public class StudentList {
 			System.out.println("Loading data ...");			
 			try {
 			BufferedReader s = new BufferedReader(
-					new InputStreamReader(
+					     new InputStreamReader(
 							new FileInputStream("students.txt"))); 
 			String D = s.readLine();
 			char a[] = D.toCharArray();			
